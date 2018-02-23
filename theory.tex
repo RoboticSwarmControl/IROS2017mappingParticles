@@ -28,7 +28,11 @@ Exploring a 1D environment of size $m$ with $n$ particles of unit size. Here $m=
 }
 \end{figure}
 
+
+
+=======
 For $n>1$ the average expected number of moves is calculated as follows.
+
 Let $\mathbf{p}$ be the list of positions of $n$ unit size particles uniformly distributed from $[1, m]$.
 As shown in Fig. \ref{fig:coverage1d}, the number of moves to discover the left and right boundaries is bounded by the maximum and minimum particles $ \pmin =\min(\mathbf{p})$, $\pmax =\max(\mathbf{p})$, requiring moving left $\pmin$, followed by a move of $m-(\pmax - \pmin )+1 $ right.
 When $n=m$, the algorithm requires 2 moves, one left, one right.
@@ -148,7 +152,11 @@ If the environment is unknown, as it is in our case, the best achievable competi
 
 \subsubsection{2D mapping with $n$ particles}
 
+
+Another problem with this type of mapping is to identifying which move sequence guarantees the shortest path in the worst case.
+=======
 Another problem with this type of mapping is identifying which move sequence guarantees the shortest path in the worst case.
+
 %At the beginning there can be at most four frontier cells per particle to be explored. 
  %As the particles begin to move, the number of frontier cells explored and the number of free cells identified increases. 
  
@@ -235,14 +243,22 @@ In some scenarios {\sc ClosestFrontier} can perform worse than DFS with a single
 \includegraphics[width=1.0\columnwidth]{greedy2}
 \end{center}
 \caption{\label{fig:square-worse-than-opt}
+
+Alg.~\ref{alg:ClosestFrontier} is not optimal in all cases. Alg.~\ref{alg:ClosestFrontier}, which is greedy, could go right first and then cover the square with a single particle which takes $\Omega(n^2)$ moves while the optimal solution, which visits the square in parallel using all $n$ particles, only needs $O(n)$ moves.}
+=======
 {\sc ClosestFrontier} is not optimal in all cases. {\sc ClosestFrontier}, which is greedy, could go right first and then cover the square with a single particle which takes $\Omega(n^2)$ moves while the optimal solution, which visits the square in parallel using all $n$ particles, only needs $O(n)$ moves.}
+
 \end{figure}
 	
 \begin{figure}
 \begin{center}	\includegraphics[width=0.8\columnwidth]{greedy1}
 \end{center}
 \caption{\label{fig:greed-worse-than-dfs}
+
+Alg.~\ref{alg:ClosestFrontier} can be worse than DFS in some cases as well. In this example, using Alg.~\ref{alg:ClosestFrontier} is $1.5\times$ worse than DFS using only particle 2.}
+=======
 {\sc ClosestFrontier} can be worse than DFS in some cases as well. In this example, using {\sc ClosestFrontier} is $1.5\times$ worse than DFS using only particle 2.}
+
 %If the move preference order is $\{l,u,r,d\}$ using Alg.~\ref{alg:ClosestFrontier}. then coverage with two particles takes approximately 1.5 times longer than with just the bottom right particle.
 \end{figure}
 
